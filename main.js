@@ -256,3 +256,64 @@ const garbage = (number1 = 2, number2 = 3) => number1 + number2;
 
 console.log(garbage(21,49));
 
+//Object Oriented Programming
+//construct objects with a constructor function
+
+function Human(firstNombre, lastNombre, dob){
+    this.firstNombre = firstNombre;
+    this.lastNombre = lastNombre;
+    this.dob = new Date(dob);
+    //add methods/functions to this function
+    /*
+    this.getBirthYear = function(){
+        return this.dob.getFullYear();
+    }
+    */
+    this.getFullName = function(){
+        //return this.firstNombre + ' ' + this.lastNombre; // this also works
+        return `${firstNombre} ${lastNombre}`
+    } // problem is that this function will load regardless if we want it per object, so what we can do is the thing below but for birth year
+}
+
+Human.prototype.getBirthYear = function(){
+    return this.dob.getFullYear();
+} // then this loads into he prototype and not in the actual object.
+
+//instantiate object
+const human1 = new Human('Norman', 'Grundy', '10-11-1998'); //have to use USA date format to be able to use the new Date() function above.
+const human2 = new Human('Phoebe', 'Michaelides', '01-21-1998');
+
+console.log(human1.getBirthYear());
+
+console.log(human1.dob);
+
+console.log(human2);
+
+console.log(human2.dob.getFullYear());
+
+console.log(human2.getFullName());
+
+//CLASSES
+
+let currentDate = new Date();
+
+class Dog{ 
+    constructor(nombre, haircolour, barksound, yearsAlive){ //a method is a function inside a class, which this is.
+        this.nombre = nombre;
+        this.haircolour = haircolour;
+        this.barksound = barksound;
+        this.yearsAlive = new Number(yearsAlive);
+    }
+
+    getBirthYearOfDog(){
+        return currentDate.getFullYear()-this.yearsAlive;
+    }
+
+}
+
+//instantiate object
+const dog1 = new Dog('Fido', 'brown', 'bark', 9);
+const dog2 = new Dog('Sparky', 'black', 'woof', 2);
+
+console.log(dog1);
+console.log(dog2.getBirthYearOfDog()); // returns birth year of dog
