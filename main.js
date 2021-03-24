@@ -255,3 +255,4 @@ console.log(togetherNumbers(9,9));
 const garbage = (number1 = 2, number2 = 3) => number1 + number2;
 
 console.log(garbage(21,49));
+
